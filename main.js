@@ -18,6 +18,16 @@ axios.get(api)
     
 .catch((err) => console.error(err))
 
+function empezar() {
+    let contadorPregunta = 0;
+    proximaPregunta();
+}
+
+function proximaPregunta() {
+    limpiar()
+    mostrarPreguntas(preguntas[contadorPregunta]);
+}
+
 function mostrarPreguntas(pregunta) {
 
     questionElement.innerText = question.question;
@@ -33,5 +43,13 @@ function mostrarPreguntas(pregunta) {
   
       answerButtonsElement.appendChild(btn);
     });
-  }
-  
+
+}
+
+function mostrarPreguntas(pregunta) {
+    preguntaElement.innerText = pregunta.pregunta;
+}
+    
+function limpiar() {
+    respuestas.innerHTML = "";
+}

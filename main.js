@@ -2,54 +2,20 @@ const contenedorPreguntas = document.getElementById("contenedorPreguntas");
 const preguntas = document.getElementById("preguntas");
 const respuestas = document.getElementById("respuestas");
 const btnSiguiente = document.getElementById("siguiente");
-let api = "https://opentdb.com/api.php?amount=10&category=18&difficulty=medium&type=boolean&encode=url3986"
+let api = "https://opentdb.com/api.php?amount=5&category=15&difficulty=medium&type=multiple&encode=url3986"
 
 axios.get(api)
 
 .then((res) => {
-    const arrayPreguntas = res.data.results
+    const arrayPreguntas = res.data.results  
+    let contador = 0;  
 
-    for (const element of arrayPreguntas) {
+console.log(arrayPreguntas);
 
-        preguntas.innerText = `${element.question}`
+    preguntas.innerText = `${arrayPreguntas[contador].question}`
+    respuestas.innerHTML = `<button id="correcta">${arrayPreguntas[contador].correct_answer}</button> <button id="incorrecta">${arrayPreguntas[contador].incorrect_answers}</button>`        
 
-    }
+    
 })
     
 .catch((err) => console.error(err))
-
-function empezar() {
-    let contadorPregunta = 0;
-    proximaPregunta();
-}
-
-function proximaPregunta() {
-    limpiar()
-    mostrarPreguntas(preguntas[contadorPregunta]);
-}
-
-function mostrarPreguntas(pregunta) {
-
-    questionElement.innerText = question.question;
-
-    question.answers.forEach((respuesta) => {
-        
-      const btn = document.createElement("button");
-      btn.innerText = respuesta.text;
-  
-      if (respuesta.correct) {
-        btn.dataset.correct = true;
-      }
-  
-      answerButtonsElement.appendChild(btn);
-    });
-
-}
-
-function mostrarPreguntas(pregunta) {
-    preguntaElement.innerText = pregunta.pregunta;
-}
-    
-function limpiar() {
-    respuestas.innerHTML = "";
-}

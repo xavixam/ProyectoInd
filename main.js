@@ -40,11 +40,11 @@ function empezar(res) {
 }
 
 function mostrarPreguntas(arrayPreguntas, contador) {
-    preguntas.innerText = `${arrayPreguntas[contador].question}`
-    respuestas.innerHTML = `<button id="correcta">${arrayPreguntas[contador].correct_answer}</button>
-    <button class="incorrecta">${arrayPreguntas[contador].incorrect_answers[0]}</button>
-    <button class="incorrecta">${arrayPreguntas[contador].incorrect_answers[1]}</button>
-    <button class="incorrecta">${arrayPreguntas[contador].incorrect_answers[2]}</button>`
+    preguntas.innerText = `${unescape(arrayPreguntas[contador].question)}`
+    respuestas.innerHTML = `<button id="correcta">${unescape(arrayPreguntas[contador].correct_answer)}</button>
+    <button class="incorrecta">${unescape(arrayPreguntas[contador].incorrect_answers[0])}</button>
+    <button class="incorrecta">${unescape(arrayPreguntas[contador].incorrect_answers[1])}</button>
+    <button class="incorrecta">${unescape(arrayPreguntas[contador].incorrect_answers[2])}</button>`
 
     const correcta = document.querySelector("#correcta")
     const incorrectas = document.querySelectorAll(".incorrecta")

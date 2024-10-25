@@ -27,5 +27,5 @@ function limpiar() {
 }
 
 function siguientePregunta() {
-    
+    limpiar()
 }

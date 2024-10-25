@@ -8,3 +8,11 @@
 .hide{
     display: none;
 }
+
+.correcta {
+    background-color: chartreuse;
+}
+
+.incorrectas {
+    background-color: red;
+}

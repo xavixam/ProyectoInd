@@ -5,12 +5,18 @@
     box-sizing: border-box;
 }
 
+button {
+    padding: 5px;
+    margin: 5px;
+}
+
 .hide{
     display: none;
 }
 
 .correcta {
     background-color: chartreuse;
+    pointer-events: none;
 }
 
 .incorrectas {

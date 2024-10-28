@@ -78,5 +78,5 @@ function limpiar() {
 
 function mostrarFinal() {
     contenedorPreguntas.classList.add("hide");
-    fin.innerHTML = `<h2>Resultado final: ${resultado}</h2>`
+    fin.innerHTML = `<h2>Resultado final: ${resultado}/5</h2>`
 }

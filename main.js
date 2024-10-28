@@ -90,5 +90,5 @@ function limpiar() {
 
 function mostrarFinal() {
     container.classList.add("hide");
-    fin.innerHTML = `<h2>Resultado final: ${resultado}/5</h2>`
+    fin.innerHTML = `<div class="container"><h2>Resultado final: ${resultado}/5</h2></div>`
 }

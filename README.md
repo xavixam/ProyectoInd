@@ -4,7 +4,8 @@ Este proyecto es un quiz sobre videojuegos, para poner a prueba los conocimiento
 
 Tecnologías que he utilizado 🛠️
 
-Mi proyecto esta creado con Visual Studio Code y retocado con Bootstrap para los estilos.
+Mi proyecto esta creado con Visual Studio Code y retocado con Bootstrap para los estilos. 
+También se ha utilizado Axios con la API: "https://opentdb.com/api.php?amount=5&category=15&difficulty=medium&type=multiple&encode=url3986" para las preguntas y respuestas.
 
 
 Preview

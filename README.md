@@ -12,8 +12,7 @@ Vista principal de la página:
 
 Una vez se haya completado el quiz, desaparecerán los elementos en pantalla para mostrar el resultado:
 
-![image](https://github.com/user-attachments/assets/17a4bef7-3dd7-4e6b-ab24-bc9d1725c7b7)
-
+![image](https://github.com/user-attachments/assets/b15c27cc-d884-4c1a-a0ba-78f174917ffb)
 
 Pre-requisitos 📋
 Para que la aplicación funcione debes tener instalado Visual Studio Code.

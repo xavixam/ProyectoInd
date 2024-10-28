@@ -1,4 +1,5 @@
 const contenedorPreguntas = document.getElementById("contenedorPreguntas");
+const container = document.querySelector(".container")
 const preguntas = document.getElementById("preguntas");
 const respuestas = document.getElementById("respuestas");
 const btnSiguiente = document.getElementById("siguiente");
@@ -77,6 +78,6 @@ function limpiar() {
 }
 
 function mostrarFinal() {
-    contenedorPreguntas.classList.add("hide");
+    container.classList.add("hide");
     fin.innerHTML = `<h2>Resultado final: ${resultado}/5</h2>`
 }

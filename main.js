@@ -5,47 +5,42 @@ const respuestas = document.getElementById("respuestas");
 const btnSiguiente = document.getElementById("siguiente");
 const fin = document.getElementById("fin");
 let api = "https://opentdb.com/api.php?amount=5&category=15&difficulty=medium&type=multiple&encode=url3986"
-let contador = 0;  
+let contador = 0;
 let resultado = 0;
+let arrayPreguntas = []
 
 axios.get(api)
 
-.then((res) => {
-    empezar(res)
-})
-    
-.catch((err) => console.error(err))
+    .then((res) => {
+        arrayPreguntas = res.data.results
+        empezar()
+    })
 
-function empezar(res) {
-    const arrayPreguntas = res.data.results  
+    .catch((err) => console.error(err))
 
-    mostrarPreguntas(arrayPreguntas, contador)  
-    
-    function siguientePregunta() {
-        limpiar()    
-        contador = contador + 1
+function siguientePregunta() {
+    limpiar()
 
-        if (contador < arrayPreguntas.length) {
-
-            mostrarPreguntas(arrayPreguntas, contador)
-
-        } else {
-
-            limpiar()
-            mostrarFinal()
-
-        }
+    if (contador < arrayPreguntas.length) {
+        mostrarPreguntas()
+    } else {
+        limpiar()
+        mostrarFinal()
     }
-
-    btnSiguiente.addEventListener("click", siguientePregunta)
 }
 
-function mostrarPreguntas(arrayPreguntas, contador) {
+function empezar() {
+    mostrarPreguntas()
+    siguientePregunta()
+}
+
+function mostrarPreguntas() {
+
     preguntas.innerText = `${unescape(arrayPreguntas[contador].question)}`
-    respuestas.innerHTML = `<button id="correcta">${unescape(arrayPreguntas[contador].correct_answer)}</button>
-    <button class="incorrecta">${unescape(arrayPreguntas[contador].incorrect_answers[0])}</button>
-    <button class="incorrecta">${unescape(arrayPreguntas[contador].incorrect_answers[1])}</button>
-    <button class="incorrecta">${unescape(arrayPreguntas[contador].incorrect_answers[2])}</button>`
+    respuestas.innerHTML = `<button id="correcta" class="btn btn-primary d-inline-flex align-items-center">${unescape(arrayPreguntas[contador].correct_answer)}</button>
+    <button class="btn btn-primary d-inline-flex align-items-center incorrecta">${unescape(arrayPreguntas[contador].incorrect_answers[0])}</button>
+    <button class="btn btn-primary d-inline-flex align-items-center incorrecta">${unescape(arrayPreguntas[contador].incorrect_answers[1])}</button>
+    <button class="btn btn-primary d-inline-flex align-items-center incorrecta">${unescape(arrayPreguntas[contador].incorrect_answers[2])}</button>`
 
     const correcta = document.querySelector("#correcta")
     const incorrectas = document.querySelectorAll(".incorrecta")
@@ -53,15 +48,19 @@ function mostrarPreguntas(arrayPreguntas, contador) {
     elegirCorrecta(correcta)
 
     incorrectas.forEach(element => {
-        elegirIncorrecta(element) 
-    });       
+        elegirIncorrecta(element)
+    });
 }
 
 function elegirCorrecta(correcta) {
     correcta.addEventListener("click", (e) => {
         e.preventDefault()
         correcta.classList.add("correcta")
-        resultado = resultado + 1
+        setTimeout(() => {
+            sumarContador()
+            sumarResultado()
+            siguientePregunta()
+        }, 2000);
     })
 }
 
@@ -69,7 +68,19 @@ function elegirIncorrecta(element) {
     element.addEventListener("click", (e) => {
         e.preventDefault()
         element.classList.add("incorrectas")
+        setTimeout(() => {
+            sumarContador()
+            siguientePregunta()
+        }, 2000);
     })
+}
+
+function sumarContador() {
+    contador = contador + 1
+}
+
+function sumarResultado() {
+    resultado = resultado + 1
 }
 
 function limpiar() {
